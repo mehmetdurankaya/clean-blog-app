@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //create schema
-const CleanSchema = new Schema({
+const PostSchema = new Schema({
   title: String,
   detail: String,
   dateCreated: {
@@ -12,6 +12,6 @@ const CleanSchema = new Schema({
   },
 });
 
-const Clean = mongoose.model('Clean', CleanSchema); // model oluşturuluyor
+const Post = mongoose.model('Post', PostSchema); // model oluşturuluyor
 
-module.exports = Clean;
+module.exports = Post;

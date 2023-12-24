@@ -2,12 +2,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
 const path = require('path');
-const Clean = require('./models/Clean');
+const Post = require('./models/Post');
 
 const app = express();
 
 //connect DB
-mongoose.connect('mongodb://localhost/clean', {
+mongoose.connect('mongodb://localhost/post', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -22,12 +22,19 @@ app.use(express.json());
 
 //ROUTES
 app.get('/', async (req, res) => {
-  const cleans = await Clean.find({});
+  const posts = await Post.find({});
   res.render('index', {
-    cleans,
+    posts,
   });
 });
-
+app.get('/posts/:id', async (req, res) => {
+  //console.log(req.params.id);
+  //res.render('about');
+  const post = await Post.findById(req.params.id);
+  res.render('post', {
+    post,
+  });
+});
 app.get('/about', (req, res) => {
   res.render('about');
 });
@@ -38,8 +45,8 @@ app.get('/contact', (req, res) => {
 //   console.log(req.body);
 //   res.redirect('/');
 // });
-app.post('/cleans', async (req, res) => {
-  await Clean.create(req.body);
+app.post('/posts', async (req, res) => {
+  await Post.create(req.body);
   res.redirect('/');
 });
 const port = 3000;
