@@ -22,18 +22,32 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
 
-        <% for(let i=0;i< posts.length; i++) { %> 
+        <% for(let i=0;i< articles.length; i++) { %> 
+
+
+
         <div class="post-preview">
-          <a href="/posts/<%= posts[i]._id %>">
+         
+         
+         
+          <div class="position-relative tm-thumbnail-container">
+                <img src="<%= articles[i].image %>" alt="Image" class="img-fluid tm-catalog-item-img">    
+                    <a href="/articles/<%=articles[i]._id %>" class="position-absolute tm-img-overlay">
+                          <i class="fas fa-play tm-overlay-icon"></i>
+                    </a>
+          </div>
+
+
+          <a href="/article/<%= articles[i]._id %>">
             <h2 class="post-title">
-              <%= posts[i].title %>
+              <%= articles[i].title %>
             </h2>
             <h3 class="post-subtitle">
-             <%= posts[i].detail %>
+             <%= articles[i].detail %>
             </h3>
           </a>
           <p class="post-meta">
-            <%= posts[i].dateCreated %>
+            <%= articles[i].dateCreated %>
           </p>
         </div>
         <hr>
@@ -48,5 +62,6 @@
 
   <hr>
   <%- include('partials/_footer') -%>
+
 </body>
 </html>

@@ -3,15 +3,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //create schema
-const PostSchema = new Schema({
+const ArticleSchema = new Schema({
   title: String,
-  detail: String,
+  detail: String, 
+  image:String,
   dateCreated: {
     type: Date, //tarih formatında olacak
     default: Date.now, // her yüklenen fotoğrafın varsayılan tarihini o günün tarihi olarak al
   },
 });
 
-const Post = mongoose.model('Post', PostSchema); // model oluşturuluyor
+const Article = mongoose.model('Article', ArticleSchema); // model oluşturuluyor
 
-module.exports = Post;
+module.exports = Article;
