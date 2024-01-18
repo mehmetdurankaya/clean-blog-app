@@ -7,7 +7,7 @@ const Article = require('./models/Article');
 const pageController = require('./controller/pageController');
 const articleController = require('./controller/articleController');
 const connectDB = require('./connectMongo');
-
+require('dotenv').config();
 
 
 const app = express();
