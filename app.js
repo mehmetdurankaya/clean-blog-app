@@ -14,10 +14,7 @@ const app = express();
 
 //connect DB
 connectDB();
-// mongoose.connect('mongodb://localhost/clean-blog', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+
 
 //TEMPLATE ENGINE
 app.set('view engine', 'ejs');
