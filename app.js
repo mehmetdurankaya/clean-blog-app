@@ -7,14 +7,18 @@ const path = require('path');
 const Article = require('./models/Article');
 const pageController = require('./controller/pageController');
 const articleController = require('./controller/articleController');
+const connectDB = require('./connectMongo');
+
+
 
 const app = express();
 
 //connect DB
-mongoose.connect('mongodb://localhost/clean-blog', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+connectDB();
+// mongoose.connect('mongodb://localhost/clean-blog', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
 //TEMPLATE ENGINE
 app.set('view engine', 'ejs');
@@ -40,7 +44,7 @@ app.get('/about', pageController.getAboutPage);
 app.get('/add-article', pageController.addArticlePage);
 app.get('/article/edit/:id', pageController.getEditPage);
 
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+const PORT =process.env.PORT;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
